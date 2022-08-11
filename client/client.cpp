@@ -3,14 +3,28 @@
 
 int main()
 {
-    sf::IpAddress ip = sf::IpAddress::resolve("localhost");
+    sf::IpAddress ip = sf::IpAddress(192, 168, 0, 131);
     sf::UdpSocket socket;
     sf::Packet packet;
-    packet << "UDP Packet";
-    if (socket.send(packet, ip, 3000) != sf::Socket::Done)
+
+    // send
+    unsigned short port = 3000;
+    unsigned short respPort = 3001;
+    packet << "HI from Client";
+    socket.bind(respPort);
+    if (socket.send(packet, ip, port) != sf::Socket::Done)
     {
         std::cout << "Error sending packet" << std::endl;
     };
+
+    // receive
+    char buffer[512];
+    std::size_t received = 0;
+    std::optional<sf::IpAddress> sender;
+    if (socket.receive(buffer, sizeof(buffer), received, sender, respPort) == sf::Socket::Done)
+    {
+        std::cout << sender->toString() << " said: " << buffer << std::endl;
+    }
 
     return 0;
 }

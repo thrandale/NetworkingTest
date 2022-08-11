@@ -1,9 +1,11 @@
 const dgram = require('dgram');
 const server = dgram.createSocket('udp4');
+const PORT = process.env.PORT || 3000;
 
 // receive
 server.on("message", (msg, rInfo) => messageHandler(msg, rInfo));
-server.bind(process.env.PORT || 3000);
+server.bind(PORT);
+console.log(`Server running on port ${PORT}`)
 
 let messageHandler = function (msg, rInfo) {
     console.log("Message Received: " + msg.toString());

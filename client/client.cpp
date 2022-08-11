@@ -3,12 +3,12 @@
 
 int main()
 {
-    sf::IpAddress ip = sf::IpAddress(23, 60, 91, 236);
+    sf::IpAddress ip = sf::IpAddress::resolve("https://theo-networking-test.herokuapp.com/");
     sf::UdpSocket socket;
     sf::Packet packet;
 
     // send
-    unsigned short port = 52100;
+    unsigned short port = 51774;
     unsigned short respPort = 3001;
     packet << "HI from Client";
     socket.bind(respPort);

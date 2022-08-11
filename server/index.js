@@ -1,11 +1,9 @@
 const dgram = require('dgram');
 const server = dgram.createSocket('udp4');
 
-console.log("Server listening on Port 3000");
-
 // receive
 server.on("message", (msg, rInfo) => messageHandler(msg, rInfo));
-server.bind(3000);
+server.bind(process.env.PORT || 3000);
 
 let messageHandler = function (msg, rInfo) {
     console.log("Message Received: " + msg.toString());

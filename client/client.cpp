@@ -3,7 +3,7 @@
 
 int main()
 {
-    sf::IpAddress ip = sf::IpAddress(192, 168, 0, 131);
+    sf::IpAddress ip = sf::IpAddress(23, 60, 91, 236);
     sf::UdpSocket socket;
     sf::Packet packet;
 

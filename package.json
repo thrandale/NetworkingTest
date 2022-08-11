@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "Theo crandall",
   "license": "ISC",
+  "scripts": {
+    "start": "node server/index.js"
+  },
   "dependencies": {
     "dgram": "^1.0.1"
   }

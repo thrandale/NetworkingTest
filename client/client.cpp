@@ -8,7 +8,7 @@ int main()
     sf::Packet packet;
 
     // send
-    unsigned short port = 51774;
+    unsigned short port = 53615;
     unsigned short respPort = 3001;
     packet << "HI from Client";
     socket.bind(respPort);
